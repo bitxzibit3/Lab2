@@ -31,18 +31,26 @@ public:
     void Set (size_t, T, size_t *);
     void Delete();
     void Insert (T, size_t, size_t *);
-    Polynom<T> * operator+(Polynom<T> *);
     Polynom<T> * operator*(Polynom<T> *);
     Polynom<T> * operator^(size_t);
     Polynom<T> * operator|(Polynom<T> *);
     T operator()(T);
 };
 
+template<class T>
+void Delete (Polynom<T> *);
+
 template <class T>
 Polynom<T> *PolynomEnter (int);
 
 template<class T>
 Polynom<T> *new_Polynom (Polynom<T> *);
+
+template<class T>
+Polynom<T> *new_Polynom (int);
+
+template<class T>
+Polynom<T> *new_Polynom (Sequence<T> *, int);
 
 template <class T>
 T Power (T, size_t);

@@ -38,6 +38,11 @@ Node<T>::~Node<T>()
     free (this);
 }
 
+template<class T>
+Node<T>::Node()
+{
+    this->next = NULL;
+}
 
 template<class T>
 size_t LinkedList<T>::get_size() {
@@ -53,8 +58,7 @@ size_t LinkedList<T>::get_size() {
 
 template<class T>
 LinkedList<T>::LinkedList() {
-    head = (Node <T> *) calloc (1, sizeof(Node<T>));
-    head->set_next_node(NULL);
+    head = NULL;
 }
 
 template<class T>
@@ -216,14 +220,15 @@ void LinkedList<T>::resize(size_t new_size)
     else if (new_size < this->get_size())
     {
         Node<T> *begin = this->head;
-        size_t delta = this->get_size() - new_size;
-        for (size_t i = 0; i < new_size; i++)
+        for (size_t i = 0; i < new_size - 1; i++)
             begin = begin->get_next_node();
-        while (begin != NULL)
+        Node<T> *temp = begin->get_next_node();
+        begin->set_next_node(NULL);
+        while (temp != NULL)
         {
-            Node<T> *prev = begin;
-            begin = begin->get_next_node();
-            delete prev;
+            Node<T> *prev = temp;
+            temp = temp->get_next_node();
+            free(prev);
         }
     }
 }

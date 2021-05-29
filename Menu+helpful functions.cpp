@@ -19,8 +19,9 @@ int stoi (char *str)
         i++;
     }
     return sign * ans;
-
 }
+
+
 
 int variable_choise()
 {
@@ -55,28 +56,217 @@ int choise_()
         }
 }
 
+bool where_foo (char sign, complex number, complex value)
+{
+    if (sign == '=')
+        return value == number;
+    else
+    {
+        //Exception
+    }
+}
+
 template <class T>
-void dialog(int seq)
+bool where_foo (char sign, T number, T value)
+{
+    switch(sign)
+    {
+        case ('<'):
+        {
+            if (value < number)
+                return true;
+            return false;
+        }
+        case ('='):
+        {
+            if (value == number)
+                return true;
+            return false;
+        }
+        case ('>'):
+        {
+            if (value > number)
+                return true;
+            return false;
+        }
+    }
+}
+
+template <class T>
+int dialog(int seq)
 {
     int choise = choise_();
+    while (1)
     switch (choise)
     {
         case(0):
         {
             std::cout << "Good Bye!" << std::endl;
-            return;
+            return 0;
         }
         case(1):
         {
             Polynom<T> *first = PolynomEnter<T>(seq);
-            std::cout << "You entered : ";
+            std::cout << "You entered P(x): ";
             first->Print();
             Polynom<T> *second = PolynomEnter<T>(seq);
-            std::cout << "You entered : ";
+            std::cout << "You entered S(x): ";
             second->Print();
-            //Polynom<T> *ans = first + second;
-            //ans->Print();
+            std::cout << "Sum of polynoms (P(x) + S(x)): ";
+            Polynom<T> *ans = PolynomSum(first, second);
+            ans->Print();
+            choise = choise_();
+            delete first;
+            delete second;
+            delete ans;
+            break;
+        }
+        case(2):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            Polynom<T> *second = PolynomEnter<T>(seq);
+            std::cout << "You entered S(x): ";
+            second->Print();
+            std::cout << "Multiplication of polynoms (P(x) * S(x)): ";
+            Polynom<T> *ans = PolynomMult(first, second);
+            ans->Print();
+            choise = choise_();
+            delete first;
+            delete second;
+            delete ans;
+            break;
+        }
+        case(3):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            size_t coef;
+            std::cout << "Enter degree q: ";
+            std::cin >> coef;
+            std::cout << "Polynom's power (P(x) ^ q): ";
+            Polynom<T> *ans = PolynomDegree(first, coef);
+            ans->Print();
+            delete ans;
+            choise = choise_();
+            break;
+        }
+        case(4):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            Polynom<T> *second = PolynomEnter<T>(seq);
+            std::cout << "You entered S(x): ";
+            second->Print();
+            std::cout << "Composition of polynoms (P(S(X))): ";
+            Polynom<T> *ans = PolynomComp(first, second);
+            ans->Print();
+            delete first;
+            delete second;
+            delete ans;
+            choise = choise_();
+            break;
+        }
+        case(5):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            T x;
+            std::cout << "Enter value (x) :";
+            std::cin >> x;
+            std::cout << "P(" << x << ") = " << first->CountValue(x) << std::endl;
+            delete first;
+            choise = choise_();
+            break;
+        }
+        case(6):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            std::cout << "Enter function to filter coefs. Like (<3), (=4), (>-3):";
+            char sign;
+            T number;
+            std::cin >> sign >> number;
+            Sequence<T> *after_where = Where(sign, number, where_foo, first->GetData(), seq);
+            Polynom<T> *rez = new_Polynom(after_where, seq);
+            rez->Print();
+            delete first;
+            delete after_where;
+            delete rez;
+            choise = choise_();
+            break;
+        }
+        case(7):
+        {
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            Polynom<T> *second = PolynomEnter<T>(seq);
+            std::cout << "You entered S(x): ";
+            second->Print();
+            Sequence<T> *ans = first->GetData()->Concat(second->GetData());
+            Polynom<T> *answer = new_Polynom(ans, seq);
+            answer->Print();
+            delete first;
+            delete second;
+            delete ans;
+            delete answer;
+            choise = choise_();
+            break;
+        }
+        case(8):
+        {
+            size_t checker = 0;
+            Polynom<T> *first = PolynomEnter<T>(seq);
+            std::cout << "You entered P(x): ";
+            first->Print();
+            size_t begin, end;
+            std::cout << "Enter exact scopes of result polynom (from 0 to " << first->Size() - 1 << "): ";
+            while (1)
+            {
+                std::cin >> begin >> end;
+                if ((end < begin) || (begin < 0) || (begin >= first->Size()) || (end >= first->Size()))
+                    std::cout << "Wrong scopes! Please, try again!" << std::endl;
+                else
+                    break;
+            }
+            Sequence<T> *ans = first->GetData()->GetSubSeq(begin, end, &checker);
+            for (size_t i = 0; i < begin; i++)
+                ans->Prepend((T)0.);
+            Polynom<T> *answer = new_Polynom(ans, seq);
+            delete first;
+            delete ans;
+            delete answer;
+            answer->Print();
+            choise = choise_();
+            break;
+        }
+        case (9):
+        {
+            return variable_choise();
         }
     }
 }
 
+template<class T>
+Sequence<T> *Where(char sign, T number, bool (*foo)(char, T, T), Sequence<T> *data, int seq_type)
+{
+    size_t checker = 0;
+    Sequence<T> *ans;
+    if (seq_type == 1)
+        ans = (Sequence<T> *) new ListSeq<T> ();
+    else
+        ans = (Sequence<T> *) new ArrSeq<T> ();
+    size_t rez_size = 0;
+    for (size_t i = 0; i < data->GetSize(); i++)
+        if (foo(sign, number, data->Get(i, &checker)) == true)
+            ans->Append(data->Get(i, &checker));
+        else
+            ans->Append((T)0.);
+    return ans;
+}

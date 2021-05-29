@@ -73,15 +73,13 @@ void ArrSeq<T>::Prepend(T value) {
 
 template<class T>
 void ArrSeq<T>::Insert(T value, size_t index, size_t *checker) {
-    if ((index < 0) || (index > array->get_size()))
-    {
+    if ((index < 0) || (index > array->get_size())) {
         *checker = 1;
         //excepetion
     }
-    array->resize(array->get_size() + 1);
-    for (size_t i = index + 1; i < array->get_size(); i++)
-        array->set_i(i, array->get_i(i - 1));
-    array->set_i(index, value);
+    else {
+        this->array->insert(value, index);
+    }
 }
 
 template<class T>

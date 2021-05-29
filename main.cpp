@@ -4,21 +4,30 @@
 #include "complex.cpp"
 #include "Menu+helpful functions.cpp"
 
-const int VAR = variable_choise();
+int VAR = variable_choise();
+
 const int SEQTYPE = 1;
 
 int main() {
-    Polynom<int> *tmp = PolynomEnter<int>(SEQTYPE);
-    tmp->Print();
-    std::cout << tmp->Size();
-//    switch (VAR)
-//    {
-//        case (1):
-//            dialog <int> (SEQTYPE);
-//        case (2):
-//            dialog <float> (SEQTYPE);
-//        case(3):
-//            dialog <complex> (SEQTYPE);
-//    }
+    while (1) {
+        switch (VAR) {
+            case(0):
+            {
+                return 0;
+            }
+            case (1): {
+                VAR = dialog<int>(SEQTYPE);
+                break;
+            }
+            case (2): {
+                VAR = dialog<float>(SEQTYPE);
+                break;
+            }
+            case (3): {
+                VAR = dialog<complex>(SEQTYPE);
+                break;
+            }
+        }
+    }
     return 0;
 }

@@ -13,6 +13,7 @@ protected:
     Node *next;
     T value;
 public:
+    Node ();
     Node<T> *get_next_node();
     void set_next_node(Node <T> *);
     T get_value ();

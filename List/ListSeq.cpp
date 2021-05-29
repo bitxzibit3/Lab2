@@ -95,7 +95,7 @@ void ListSeq<T>::Prepend(T item) {
 template<class T>
 void ListSeq<T>::Insert(T item, size_t index, size_t *checker) {
     *checker = 0;
-    if ((index < 0) || (index >= this->GetSize()))
+    if ((index < 0) || (index > this->GetSize()))
     {
         *checker = 1;
         //Exception
