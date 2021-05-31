@@ -134,6 +134,8 @@ void LinkedList<T>::prepend(T new_value) {
     head = newNode;
 }
 
+
+
 template<class T>
 void LinkedList<T>::append(T new_value) {
     if (this->head == NULL)
@@ -214,9 +216,15 @@ void LinkedList<T>::DeleteLinkedList()
 template<class T>
 void LinkedList<T>::resize(size_t new_size)
 {
+    if (new_size == 0)
+    {
+        this->resize(1);
+        head = NULL;
+        return;
+    }
     if (new_size > this->get_size())
         for (size_t i = this->get_size(); i < new_size; i++)
-            this->append((T)0.);
+            this->append();
     else if (new_size < this->get_size())
     {
         Node<T> *begin = this->head;
@@ -241,3 +249,20 @@ void LinkedList<T>::set_i(size_t index, T value) {
     now->set_value(value);
 }
 
+template<class T>
+void LinkedList<T>::append()
+{
+    if (this->head == NULL)
+    {
+        head = new Node<T> ();
+        return;
+    }
+    Node<T> *now = head, *last = head;
+    while (now != NULL)
+    {
+        last = now;
+        now = now->get_next_node();
+    }
+    now = new Node<T> ();
+    last->set_next_node(now);
+}

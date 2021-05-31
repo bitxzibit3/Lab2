@@ -128,7 +128,7 @@ void ArrSeq<T>::Set(size_t index, T value, size_t *checker)
     }
     if (this->GetSize() == 0)
         this->array = new DArray<T> (&value, 1);
-    else if (index == 0)
+    else
         this->array->set_i(index, value);
 }
 

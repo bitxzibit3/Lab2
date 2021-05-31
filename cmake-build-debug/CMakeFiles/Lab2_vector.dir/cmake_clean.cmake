@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Lab2_vector.dir/Array/ArrSeq.cpp.obj"
   "CMakeFiles/Lab2_vector.dir/Array/DynArray.cpp.obj"
+  "CMakeFiles/Lab2_vector.dir/Library.cpp.obj"
   "CMakeFiles/Lab2_vector.dir/List/LinkedList.cpp.obj"
   "CMakeFiles/Lab2_vector.dir/List/ListSeq.cpp.obj"
   "CMakeFiles/Lab2_vector.dir/Sequence.cpp.obj"

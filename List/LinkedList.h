@@ -39,6 +39,7 @@ public:
     LinkedList <T> * get_sublist (size_t, size_t);
     size_t get_size();
     void resize(size_t);
+    void append();
     void append(T);
     void prepend (T);
     void insert (size_t, T);

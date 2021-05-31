@@ -92,6 +92,12 @@
 		<Unit filename="C:/Users/Timur/CLionProjects/Lab2_vector/Array/DynArray.h">
 			<Option target="Lab2_vector"/>
 		</Unit>
+		<Unit filename="C:/Users/Timur/CLionProjects/Lab2_vector/Library.cpp">
+			<Option target="Lab2_vector"/>
+		</Unit>
+		<Unit filename="C:/Users/Timur/CLionProjects/Lab2_vector/Library.h">
+			<Option target="Lab2_vector"/>
+		</Unit>
 		<Unit filename="C:/Users/Timur/CLionProjects/Lab2_vector/List/LinkedList.cpp">
 			<Option target="Lab2_vector"/>
 		</Unit>

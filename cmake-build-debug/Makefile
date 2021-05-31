@@ -195,6 +195,33 @@ Array/DynArray.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab2_vector.dir\build.make CMakeFiles/Lab2_vector.dir/Array/DynArray.cpp.s
 .PHONY : Array/DynArray.cpp.s
 
+Library.obj: Library.cpp.obj
+
+.PHONY : Library.obj
+
+# target to build an object file
+Library.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab2_vector.dir\build.make CMakeFiles/Lab2_vector.dir/Library.cpp.obj
+.PHONY : Library.cpp.obj
+
+Library.i: Library.cpp.i
+
+.PHONY : Library.i
+
+# target to preprocess a source file
+Library.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab2_vector.dir\build.make CMakeFiles/Lab2_vector.dir/Library.cpp.i
+.PHONY : Library.cpp.i
+
+Library.s: Library.cpp.s
+
+.PHONY : Library.s
+
+# target to generate assembly for a file
+Library.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Lab2_vector.dir\build.make CMakeFiles/Lab2_vector.dir/Library.cpp.s
+.PHONY : Library.cpp.s
+
 List/LinkedList.obj: List/LinkedList.cpp.obj
 
 .PHONY : List/LinkedList.obj
@@ -318,6 +345,9 @@ help:
 	@echo ... Array/DynArray.obj
 	@echo ... Array/DynArray.i
 	@echo ... Array/DynArray.s
+	@echo ... Library.obj
+	@echo ... Library.i
+	@echo ... Library.s
 	@echo ... List/LinkedList.obj
 	@echo ... List/LinkedList.i
 	@echo ... List/LinkedList.s

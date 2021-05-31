@@ -34,6 +34,14 @@ string.h
 stdio.h
 -
 
+C:/Users/Timur/CLionProjects/Lab2_vector/Library.cpp
+Library.h
+C:/Users/Timur/CLionProjects/Lab2_vector/Library.h
+
+C:/Users/Timur/CLionProjects/Lab2_vector/Library.h
+Polynom.h
+C:/Users/Timur/CLionProjects/Lab2_vector/Polynom.h
+
 C:/Users/Timur/CLionProjects/Lab2_vector/List/LinkedList.cpp
 LinkedList.h
 C:/Users/Timur/CLionProjects/Lab2_vector/List/LinkedList.h
@@ -65,8 +73,8 @@ iostream
 -
 stdlib.h
 -
-functional
--
+Library.h
+C:/Users/Timur/CLionProjects/Lab2_vector/Library.h
 
 C:/Users/Timur/CLionProjects/Lab2_vector/Polynom.cpp
 Polynom.h
@@ -119,4 +127,6 @@ complex.cpp
 C:/Users/Timur/CLionProjects/Lab2_vector/complex.cpp
 Menu+helpful functions.cpp
 C:/Users/Timur/CLionProjects/Lab2_vector/Menu+helpful functions.cpp
+Library.cpp
+C:/Users/Timur/CLionProjects/Lab2_vector/Library.cpp
 

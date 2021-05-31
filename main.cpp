@@ -3,6 +3,7 @@
 #include "Polynom.cpp"
 #include "complex.cpp"
 #include "Menu+helpful functions.cpp"
+#include "Library.cpp"
 
 int VAR = variable_choise();
 

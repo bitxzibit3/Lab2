@@ -155,7 +155,11 @@ Polynom<T> *PolynomEnter(int Seqtype) {
         ans->Insert(coef, i, &checker);
     }
     while (ans->Get(ans->Size() - 1, &checker) == (T)0.)
+    {
+        if (ans->Size() - 1 == 0)
+            return ans;
         ans->Resize(ans->Size() - 1);
+    }
     return ans;
 }
 
@@ -180,7 +184,7 @@ Polynom<T> *PolynomScalarMult(Polynom<T> *pol, P scalar) {
     size_t checker = 0;
     for (size_t i = 0; i < pol->Size(); i++)
         ans->Set(i, pol->Get(i, &checker) * scalar, &checker);
-    return ans;
+        return ans;
 }
 
 template<class T>
@@ -201,9 +205,6 @@ Polynom<T> *PolynomMult(Polynom<T> *first, Polynom<T> *second) {
 template<class T>
 Polynom<T> *PolynomDegree(Polynom<T> *pol, size_t degree) {
     Polynom<T> *ans = pol, *temp = pol;
-    if (degree < 0) {
-        //Exception
-    }
     if (degree == 0) {
         T q[] = {(T) 1.};
         if (pol->GetType() == 1)
@@ -224,14 +225,14 @@ Polynom<T> *PolynomDegree(Polynom<T> *pol, size_t degree) {
 }
 
 template<class T>
-Polynom<T> *PolynomComp(Polynom<T> *first, Polynom<T> *second) {
+Polynom<T> *PolynomComp(Polynom<T> *first, Polynom<T> *second) { //TODO С листами пизда какая то, я хуй знает как это должно работать.
     size_t checker = 0;
     Polynom<T> *ans = new_Polynom(first);
-    for (size_t now_degree = 0; now_degree < first->Size(); now_degree++) {
+    for (size_t now_degree = 0; now_degree < first->Size(); now_degree++)
+    {
         T coef = first->Get(now_degree, &checker);
         ans = PolynomSum(ans, PolynomScalarMult(PolynomDegree(second, now_degree), coef));
     }
-
     return ans;
 }
 
